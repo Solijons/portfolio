@@ -11,6 +11,7 @@ import {
   Typography
 } from '@material-ui/core';
 import GenericPrompt from '../../common/GenericPrompt';
+import ServiceFactory from '../../../context/factories/ServiceFactory';
 
 interface IContactDetails {
   body: string;
@@ -90,46 +91,27 @@ export default function Contact() {
 
   const submit = () => {
     if (isValidForm()) {
-      fetch(`https://api.sendinblue.com/v3/smtp/email`, {
-        body: JSON.stringify({
-          replyTo: {
-            email: contactDetails.email,
-            name: contactDetails.name,
-          },
-          sender: {
-            email: 'solijon7762@gmail.com',
-            name: 'Solijon Sharipov',
-          },
-          subject: contactDetails.subject,
-          textContent: contactDetails.body,
-          to: [
-            {
-              email: 'solijon7762@gmail.com',
-              name: 'Solijon Sharipov',
-            }
-          ],
-        }),
-        headers: {
-          'accept': 'application/json',
-          'api-key': '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',
-          'content-type': 'application/json',
-        },
-        method: 'POST'
-      }).then((res) => {
-        if (res.status === 201) {
-          setPrompt({
-            title: 'Success!',
-            msg: 'Thank you for contacting me. I will get back to you as soon as possible',
-            open: true,
-          })
-        } else {
-          setPrompt({
-            title: 'Failed!',
-            msg: `Failed to send email. Please try again later or email me at jonsoliev31@gmail.com`,
-            open: true,
-          })
-        }
-      });
+      new ServiceFactory()
+        .getSendingBlueService().transactions().sendTransactionEmail(
+          contactDetails.email,
+          contactDetails.name,
+          contactDetails.subject,
+          contactDetails.body
+        ).then((res) => {
+          if (res.status === 201) {
+            setPrompt({
+              title: 'Success!',
+              msg: 'Thank you for contacting me. I will get back to you as soon as possible',
+              open: true,
+            })
+          } else {
+            setPrompt({
+              title: 'Failed!',
+              msg: `Failed to send email. Please try again later or email me at jonsoliev31@gmail.com`,
+              open: true,
+            })
+          }
+        })
     }
   };
 

@@ -14,4 +14,5 @@ export interface IIAMService {
 
 export interface IIAMServiceConfig {
     cookieName?: string;
+    apiKey?: string;
 }

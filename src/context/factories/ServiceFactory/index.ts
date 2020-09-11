@@ -3,17 +3,17 @@ import PingId from '../../../services/IAM/PingId';
 
 import FactoryBase from '../baseClasses/FactoryBase';
 
-import LaborCalendar from '../../../services/LaborCalendar';
-import { ILaborCalendarConfig, ILaborCalendarService } from '../../../services/LaborCalendar/interfaces';
+import SendingBlue from '../../../services/SendingBlue';
+import { ISendingBlueConfig } from '../../../services/SendingBlue/interfaces';
 
 export default class ServiceFactory extends FactoryBase {
   private static iamService?: IIAMService;
-  private static laborCalendarService?: LaborCalendar;
+  private static sendingBlueService?: SendingBlue;
 
   constructor() {
     super();
     this.getIAMService = this.getIAMService.bind(this);
-    this.getTractivityService = this.getTractivityService.bind(this);
+    this.getSendingBlueService = this.getSendingBlueService.bind(this);
   }
 
   public getIAMService(): IIAMService {
@@ -27,14 +27,14 @@ export default class ServiceFactory extends FactoryBase {
     return ServiceFactory.iamService;
   }
 
-  public getTractivityService(): LaborCalendar {
-    if (!ServiceFactory.laborCalendarService) {
-      ServiceFactory.laborCalendarService = new LaborCalendar(
-        this.config.getServiceConfig('laborCalendarService') as ILaborCalendarConfig,
+  public getSendingBlueService(): SendingBlue {
+    if (!ServiceFactory.sendingBlueService) {
+      ServiceFactory.sendingBlueService = new SendingBlue(
+        this.config.getServiceConfig('sendingBlueService') as ISendingBlueConfig,
         this.getIAMService(),
         this.logger,
       );
     }
-    return ServiceFactory.laborCalendarService;
+    return ServiceFactory.sendingBlueService;
   }
 }
