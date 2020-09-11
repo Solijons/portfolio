@@ -1,9 +1,6 @@
-import ConfigFactory from '../../context/factories/ConfigFactory';
 import { ILogger } from '../../context/Logger/interfaces';
 import { SignInResponse } from './enums';
 import { IIAMService, IIAMServiceConfig, ILoginCreds } from './interfaces';
-
-import { APP_ENV } from '../../context/Config/enums';
 
 export default class PingId implements IIAMService {
     protected cookieName: string | undefined;
