@@ -98,7 +98,7 @@ export default function Contact() {
           contactDetails.subject,
           contactDetails.body
         ).then((res) => {
-          if (res.status === 201) {
+          if (res.messageId) {
             setPrompt({
               title: 'Success!',
               msg: 'Thank you for contacting me. I will get back to you as soon as possible',
@@ -122,6 +122,20 @@ export default function Contact() {
       [prop]: event.target.value,
     });
   };
+
+  const closeAndClearForm = () => {
+    setContactDetails({
+      body: '',
+      email: '',
+      name: '',
+      subject: '',
+    });
+    setPrompt({
+      title: '',
+      msg: '',
+      open: false
+    });
+  }
 
   return (
     <React.Fragment>
@@ -235,7 +249,7 @@ export default function Contact() {
               </div>
             )}
             closeText="Close"
-            onClose={() => setPrompt({ ...prompt, open: false })}
+            onClose={() => closeAndClearForm()}
           />
         </Grid>
       </Grid>
