@@ -28,6 +28,7 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import Footer from './Footer';
+import Blog from './Blog';
 
 interface IProps {
   children?: React.ReactElement;
@@ -104,8 +105,8 @@ export default function BackToTop(props: IProps) {
   });
   theme = responsiveFontSizes(theme);
 
-  const navigationProps = ['Intro', 'About me', 'Portfolio', 'Contact'];
-  const comps = [<Intro />, <Skills />, <Projects />, <Contact />, <Footer />];
+  const navigationProps = ['Intro', 'Blog', 'About me', 'Portfolio', 'Contact'];
+  const comps = [<Intro />, <Blog />, <Skills />, <Projects />, <Contact />, <Footer />];
   const classes = useStyles();
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
