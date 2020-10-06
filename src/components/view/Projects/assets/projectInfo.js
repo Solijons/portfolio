@@ -14,7 +14,7 @@ const data = [
     description: "Better block is platform that connetcs breast cancer patiets by geolocation.",
     name: "Better Block",
     imagePath: communityImage,
-    url: "https://joinbetterblock.com"
+    url: "https://betterblock.netlify.app/"
   },
   {
     description: "Ravenous is yelp clone web app. The application build using yelp api's and has only search functionality",
