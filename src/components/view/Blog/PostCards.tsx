@@ -57,7 +57,7 @@ const PostCards = () => {
   const [mediumPosts, setMediumPosts] = useState<IMediumPost[]>([]);
 
   useEffect(() => {
-    fetch(`https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2F%40solijons1996`)
+    fetch(`https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2F%40hardcoded`)
       .then((res) => {
         return res.json();
       }).then((res) => {
