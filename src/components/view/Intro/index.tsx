@@ -47,7 +47,7 @@ const Intro = () => {
             <Typography variant="h5" gutterBottom align="center" className={classes.center}>
               <Box letterSpacing={3} m={3}>
                 Hey, I'm Soli, nice to meet you!
-              I am currently wokring as Software Engineer, Front End <b />
+              I am currently working as Software Engineer, Front End <b />
                 <Link
                   target="_blank"
                   rel="noopener"
