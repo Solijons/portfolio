@@ -57,7 +57,7 @@ export default function Footer() {
       <Toolbar className={classes.toolbar}>
         <Grid container spacing={3}>
           <Grid item xs={12} className={classes.grid}>
-            <Link href="https://www.linkedin.com/in/soli-sharipov/" className={classes.link}>
+            <Link href="https://www.linkedin.com/in/jon-soliev/" className={classes.link}>
               <LinkedInIcon fontSize="large" style={{ color: '#1976d2' }} />
             </Link>
             <Link href="https://twitter.com/solijons96" className={classes.link}>
